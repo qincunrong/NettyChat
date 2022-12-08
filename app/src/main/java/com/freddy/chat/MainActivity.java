@@ -1,5 +1,6 @@
 package com.freddy.chat;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity implements I_CEventListener 
 
     String userId = "100002";
     String token = "token_" + userId;
-    String hosts = "[{\"host\":\"192.168.0.102\", \"port\":8855}]";
+    String hosts = "[{\"host\":\"192.168.31.54\", \"port\":8855}]";
 
     private static final String[] EVENTS = {
             Events.CHAT_SINGLE_MESSAGE
@@ -54,7 +55,6 @@ public class MainActivity extends AppCompatActivity implements I_CEventListener 
         message.setToId("100001");
         message.setTimestamp(System.currentTimeMillis());
         message.setContent(mEditText.getText().toString());
-
         MessageProcessor.getInstance().sendMsg(message);
 
     }
@@ -83,5 +83,10 @@ public class MainActivity extends AppCompatActivity implements I_CEventListener 
             default:
                 break;
         }
+    }
+
+    public void startServer(View view) {
+        Intent intent = new Intent(this, MainServerActivity.class);
+        startActivity(intent);
     }
 }

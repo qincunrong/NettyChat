@@ -37,8 +37,15 @@ import io.netty.handler.codec.protobuf.ProtobufEncoder;
  * <p>@email:           chenshichao@outlook.com</p>
  */
 public class NettyServerDemo {
+    private static boolean mIsStarted = false;
 
-    public static void main(String[] args) {
+    private static CallBack mCallBack;
+
+    public static void setCallBack(CallBack callBack) {
+        mCallBack = callBack;
+    }
+
+    public static void start() {
 
         //boss线程监听端口，worker线程负责数据读写
         EventLoopGroup boss = new NioEventLoopGroup();
@@ -80,19 +87,45 @@ public class NettyServerDemo {
             //绑定端口
             ChannelFuture future = bootstrap.bind(8855).sync();
             System.out.println("server start ...... ");
-
+            mIsStarted = true;
+            if (mCallBack != null) {
+                mCallBack.onStart();
+            }
             //等待服务端监听端口关闭
             future.channel().closeFuture().sync();
 
+
         } catch (InterruptedException e) {
+            mIsStarted = false;
             e.printStackTrace();
+            if (mCallBack != null) {
+                mCallBack.onStop();
+            }
         } finally {
             //优雅退出，释放线程池资源
             boss.shutdownGracefully();
             worker.shutdownGracefully();
         }
     }
+
+    public static boolean isStarted() {
+        return mIsStarted;
+    }
+
+    public static class CallBack{
+       public void onStart() {
+
+        }
+        public void onStop() {
+
+        }
+
+    }
 }
+
+
+
+
 
 class ServerHandler extends ChannelInboundHandlerAdapter {
 
