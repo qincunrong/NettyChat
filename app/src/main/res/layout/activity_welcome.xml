@@ -4,26 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".WelcomeActivity">
 
-    <EditText
-        android:id="@+id/et_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+
 
     <Button
+        android:id="@+id/btn_startServer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="sendMsg"
-        android:text="发送消息" />
+        android:onClick="startClient"
+        android:text="open server" />
 
-    <TextView
-        android:id="@+id/tv_msg"
+    <Button
+        android:id="@+id/btn_startClient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="收到的消息会显示在这里"
-        android:textColor="#000000"
-        android:textSize="18sp" />
+        android:onClick="startServer"
+        android:text="open server" />
 
 
 </LinearLayout>

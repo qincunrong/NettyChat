@@ -30,4 +30,5 @@ dependencies {
     implementation rootProject.ext.dependencies.fastjson
 
     implementation project(':im_lib')
+    implementation 'com.alibaba:fastjson:2.0.19'
 }

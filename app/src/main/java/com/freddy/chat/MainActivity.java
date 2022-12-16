@@ -1,15 +1,12 @@
 package com.freddy.chat;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.freddy.chat.bean.SingleMessage;
-import com.freddy.chat.event.CEvent;
 import com.freddy.chat.event.CEventCenter;
 import com.freddy.chat.event.Events;
 import com.freddy.chat.event.I_CEventListener;
@@ -42,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements I_CEventListener 
         mTextView = findViewById(R.id.tv_msg);
 
         IMSClientBootstrap.getInstance().init(userId, token, hosts, 1);
-
         CEventCenter.registerEventListener(this, EVENTS);
     }
 
@@ -85,8 +81,4 @@ public class MainActivity extends AppCompatActivity implements I_CEventListener 
         }
     }
 
-    public void startServer(View view) {
-        Intent intent = new Intent(this, MainServerActivity.class);
-        startActivity(intent);
-    }
 }

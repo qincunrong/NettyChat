@@ -6,7 +6,6 @@ import com.freddy.im.protobuf.MessageProtobuf;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
-
 import io.netty.util.internal.StringUtil;
 
 /**

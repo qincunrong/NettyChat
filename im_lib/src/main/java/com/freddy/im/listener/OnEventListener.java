@@ -20,7 +20,7 @@ public interface OnEventListener {
      *
      * @param msg
      */
-    void dispatchMsg(MessageProtobuf.Msg msg);
+    void  dispatchMsg(MessageProtobuf.Msg msg);
 
     /**
      * 从应用层获取网络是否可用
